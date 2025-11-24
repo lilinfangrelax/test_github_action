@@ -26,7 +26,9 @@ jobs:
 
       # 3. 添加服务器指纹到 known_hosts (防止首次连接询问 yes/no 导致卡死)
       - name: Adding Known Hosts
-        run: ssh-keyscan -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -p ${{ secrets.SERVER_PORT }} -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
 
       # 4. 使用 Rsync 同步文件
       - name: Deploy with Rsync

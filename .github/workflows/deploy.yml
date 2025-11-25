@@ -39,7 +39,7 @@ jobs:
           # --delete: 删除服务器上存在但 GitHub 上不存在的文件 (保持完全一致)
           # ./public/ 注意末尾的斜杠，表示同步文件夹下的内容，而不是 public 文件夹本身
           
-          rsync -avz -e 'ssh -vvv -p ${{ secrets.SERVER_PORT }}' --delete ./public/ ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/home/lilinfang/test
+          rsync -avz -e 'ssh -p ${{ secrets.SERVER_PORT }}' --delete ./public/ ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/home/lilinfang/test
 
         
         # 注意：请将 /var/www/html/ 替换为你服务器上的实际路径
